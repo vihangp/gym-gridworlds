@@ -19,16 +19,16 @@ class ExplorationGrid(gym.Env):
                 3: (0, -1),  # left
                 }
 
-        self.rf = np.ones([4, 12])
+        self.rf = np.zeros([4, 12])
         self.rf[3, 1] = 5
         self.rf[3, 5] = 5
         self.rf[3, 8] = 5
         self.rf[3, 10] = 15
         self.rf[0, 11] = 50
         self.rf[0, 9] = 5
-        self.rf[0, 7] = 5
+        self.rf[1, 6] = 5
         self.rf[0, 2] = 5
-        self.rf[3,0] = 0
+        self.rf[3,11] = 1
 
         self.timestep = 0
 
@@ -63,16 +63,16 @@ class ExplorationGrid(gym.Env):
         self.S = (3, 0)
 
         # reset reward function
-        self.rf = np.ones([4, 12])
+        self.rf = np.zeros([4, 12])
         self.rf[3, 1] = 5
         self.rf[3, 5] = 5
         self.rf[3, 8] = 5
         self.rf[3, 10] = 15
         self.rf[0, 11] = 50
         self.rf[0, 9] = 5
-        self.rf[0, 7] = 5
+        self.rf[1, 6] = 5
         self.rf[0, 2] = 5
-        self.rf[3,0] = 0
+        self.rf[3,11] = 1
 
         # reset timesteps
         self.timestep = 0
