@@ -1,5 +1,6 @@
 import gym
 from gym import spaces
+import numpy as np
 
 
 class DistractedCliffEnv(gym.Env):
@@ -17,6 +18,8 @@ class DistractedCliffEnv(gym.Env):
                 2: (1, 0),  # down
                 3: (0, -1),  # left
                 }
+        self.rf = np.ones([4, 12])
+        self.rf[3, 1:11] = 10
 
         # begin in start state
         self.reset()
@@ -25,17 +28,27 @@ class DistractedCliffEnv(gym.Env):
         x, y = self.moves[action]
         self.S = self.S[0] + x, self.S[1] + y
 
+        # if on the edge stay there itself
         self.S = max(0, self.S[0]), max(0, self.S[1])
+        # if on the edge stay there itself
         self.S = (min(self.S[0], self.height - 1),
                   min(self.S[1], self.width - 1))
-
+        # reward function
         if self.S == (self.height - 1, self.width - 1):
-            return self.S, -1, True, {}
+            r = self.rf[self.S]
+            return self.S, r, True, {}
         elif self.S[1] != 0 and self.S[0] == self.height - 1:
-            # the cliff
-            return self.reset(), -100, False, {}
-        return self.S, -1, False, {}
+            # the cliff - return the reward and end the episode
+            r = self.rf[self.S]
+            return self.S, r, True, {}
+
+        r = self.rf[self.S]
+        self.rf[self.S] = 0
+        return self.S, r, False, {}
 
     def reset(self):
         self.S = (3, 0)
+        # reset reward function
+        self.rf = np.ones([4, 12])
+        self.rf[3, 1:11] = 10
         return self.S
