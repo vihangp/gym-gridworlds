@@ -52,5 +52,5 @@ This is a modified version of the Cliff-v0.
 Here the reward is 1 on all transition except those into region
 that is cliff.
 Stepping into this region incurs a reward of "r", where r is less
-than the return accumulated if the agent goes through all the states
-and sends the agent instantly back to the start.
+than the return accumulated if the agent goes through all the states. Also,
+reaching the cliff, ends the episode.

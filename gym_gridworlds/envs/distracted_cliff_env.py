@@ -20,6 +20,7 @@ class DistractedCliffEnv(gym.Env):
                 }
         self.rf = np.ones([4, 12])
         self.rf[3, 1:11] = 10
+        self.rf[3,0] = 0
 
         # begin in start state
         self.reset()
@@ -47,8 +48,12 @@ class DistractedCliffEnv(gym.Env):
         return self.S, r, False, {}
 
     def reset(self):
+        # reset the state
         self.S = (3, 0)
+
         # reset reward function
         self.rf = np.ones([4, 12])
         self.rf[3, 1:11] = 10
+        self.rf[3, 0] = 0
+
         return self.S
