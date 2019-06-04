@@ -54,3 +54,11 @@ that is cliff.
 Stepping into this region incurs a reward of "r", where r is less
 than the return accumulated if the agent goes through all the states. Also,
 reaching the cliff, ends the episode.
+
+``ExplorationGrid-v0``
+------------
+
+This is a modified version of the Cliff-v0.
+Here the reward is 1 on all transition and there are few transitions, where the
+reward is 5. The agent cannot get the reward for the same state again within the same reward, once it has
+entered some state. The episode ends, once it goes to the bottom right corner.
