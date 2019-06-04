@@ -45,7 +45,7 @@ class DistractedCliffEnv(gym.Env):
             # the cliff - return the reward and end the episode
             r = self.rf[self.S]
             return self.S, r, True, {}
-        elif self.timestep == 100
+        elif self.timestep == 100:
             r = self.rf[self.S]
             self.rf[self.S] = 0
             return self.S, r, True, {}
