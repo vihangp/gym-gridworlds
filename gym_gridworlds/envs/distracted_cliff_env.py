@@ -2,7 +2,7 @@ import gym
 from gym import spaces
 
 
-class CliffEnv(gym.Env):
+class DistractedCliffEnv(gym.Env):
     def __init__(self):
         self.height = 4
         self.width = 12

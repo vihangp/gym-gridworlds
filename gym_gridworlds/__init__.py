@@ -12,3 +12,7 @@ register(
         id='Cliff-v0',
         entry_point='gym_gridworlds.envs:CliffEnv',
         )
+register(
+        id='DistractedCliff-v0',
+        entry_point='gym_gridworlds.envs:DistractedCliffEnv',
+        )
