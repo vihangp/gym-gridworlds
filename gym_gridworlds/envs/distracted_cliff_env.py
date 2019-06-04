@@ -22,10 +22,13 @@ class DistractedCliffEnv(gym.Env):
         self.rf[3, 1:11] = 10
         self.rf[3,0] = 0
 
+        self.timestep = 0
+
         # begin in start state
         self.reset()
 
     def step(self, action):
+        self.timestep += 1
         x, y = self.moves[action]
         self.S = self.S[0] + x, self.S[1] + y
 
@@ -42,6 +45,10 @@ class DistractedCliffEnv(gym.Env):
             # the cliff - return the reward and end the episode
             r = self.rf[self.S]
             return self.S, r, True, {}
+        elif self.timestep == 100
+            r = self.rf[self.S]
+            self.rf[self.S] = 0
+            return self.S, r, True, {}
 
         r = self.rf[self.S]
         self.rf[self.S] = 0
@@ -55,5 +62,8 @@ class DistractedCliffEnv(gym.Env):
         self.rf = np.ones([4, 12])
         self.rf[3, 1:11] = 10
         self.rf[3, 0] = 0
+
+        # reset timesteps
+        self.timestep = 0
 
         return self.S
