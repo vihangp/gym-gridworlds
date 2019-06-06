@@ -3,3 +3,5 @@ from gym_gridworlds.envs.windy_gridworld_env import WindyGridworldEnv    # noqa
 from gym_gridworlds.envs.cliff_env import CliffEnv   # noqa
 from gym_gridworlds.envs.distracted_cliff_env import DistractedCliffEnv   # noqa
 from gym_gridworlds.envs.gridworld_env_2 import ExplorationGrid
+from gym_gridworlds.envs.distracted_cliff_1 import DistractedCliffEnv1
+from gym_gridworlds.envs.gridworld_env_3 import ExplorationGrid1
